@@ -15,8 +15,8 @@ CREATE TABLE if not exists users(
   PRIMARY KEY (`user_id`)
 );
  
-//CREATE TABLE if not exists roles (
-//  role_id int(11) NOT NULL AUTO_INCREMENT,
-//  role varchar(45) NOT NULL,
-//  PRIMARY KEY (`id`)
-//#);
+CREATE TABLE if not exists roles (
+  role_id int(11) NOT NULL AUTO_INCREMENT,
+  name varchar(45) NOT NULL,
+  PRIMARY KEY (`id`)
+);
