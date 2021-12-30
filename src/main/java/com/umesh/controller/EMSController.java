@@ -10,47 +10,47 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.umesh.entity.DebateRecord;
+import com.umesh.entity.EmployeeRecord;
 import com.umesh.exception.RecordNotFoundException;
-import com.umesh.services.DebateService;
+import com.umesh.services.EmployeeService;
 
 
 @Controller
 @RequestMapping("/")
-public class DebateController {
+public class EMSController {
 
 	@Autowired
-	DebateService service;
+	EmployeeService service;
 
 
 	@RequestMapping(path = {"/list"})
-	public String getAllDebateRecords(Model model) {
-		List<DebateRecord> list = service.getAllDebateRecords();
+	public String getAllEmployeeRecords(Model model) {
+		List<EmployeeRecord> list = service.getAllEmployeeRecords();
 
 		model.addAttribute("students", list);
 		return "list-students";
 	}
 
 	@RequestMapping(path = { "/edit", "/edit/{id}" })
-	public String editDebateRecordById(Model model, @PathVariable("id") Optional<Long> id) throws RecordNotFoundException {
+	public String editEmployeeRecordById(Model model, @PathVariable("id") Optional<Long> id) throws RecordNotFoundException {
 		if (id.isPresent()) {
-			DebateRecord entity = service.getDebateRecordById(id.get());
-			model.addAttribute("debateRecord", entity);
+			EmployeeRecord entity = service.getEmployeeRecordById(id.get());
+			model.addAttribute("EmployeeRecord", entity);
 		} else {
-			model.addAttribute("debateRecord", new DebateRecord());
+			model.addAttribute("EmployeeRecord", new EmployeeRecord());
 		}
-		return "add-edit-debate-record";
+		return "add-edit-employee-record";
 	}
 
 	@RequestMapping(path = "/delete/{id}")
-	public String deleteDebateRecordById(Model model, @PathVariable("id") Long id) throws RecordNotFoundException {
-		service.deleteDebateRecordById(id);
+	public String deleteEmployeeRecordById(Model model, @PathVariable("id") Long id) throws RecordNotFoundException {
+		service.deleteEmployeeRecordById(id);
 		return "redirect:/list/";
 	}
 
-	@RequestMapping(path = "/createDebateRecord", method = RequestMethod.POST)
-	public String createOrUpdateDebateRecord(DebateRecord debateRecord) {
-		service.createOrUpdateDebateRecord(debateRecord);
+	@RequestMapping(path = "/createEmployeeRecord", method = RequestMethod.POST)
+	public String createOrUpdateEmployeeRecord(EmployeeRecord employeeRecord) {
+		service.createOrUpdateEmployeeRecord(employeeRecord);
 		return "redirect:/list/";
 	}
 	

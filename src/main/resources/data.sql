@@ -1,9 +1,9 @@
 INSERT INTO 
-    TBL_STUDENTS (name, department, country) 
+    employees (firstname, lastname, email) 
 VALUES
-    ('Lokesh Sharma', 'Computer Science', 'India'),
-    ('John Wick', 'Electronics', 'Canada'),
-    ('Sagar Shah', 'Electrical', 'India');
+    ('Lokesh', 'Sharma', 'loki@gmail.com'),
+    ('Apurv', 'Goel', 'apurv@gmail.com'),
+    ('Neha', 'Dhupia', 'neha@gmail.com');
     
     
 INSERT INTO 
