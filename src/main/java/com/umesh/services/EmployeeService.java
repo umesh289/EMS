@@ -26,6 +26,17 @@ public class EmployeeService {
             return new ArrayList<EmployeeRecord>();
         }
     }
+    
+    public List<EmployeeRecord> getEmployeeRecordsByFirstname(String firstname)
+    {
+        List<EmployeeRecord> result = (List<EmployeeRecord>) repository.findByFirstname(firstname);
+         
+        if(result.size() > 0) {
+            return result;
+        } else {
+            return new ArrayList<EmployeeRecord>();
+        }
+    }
      
     public EmployeeRecord getEmployeeRecordById(Long id) throws RecordNotFoundException 
     {
@@ -79,6 +90,21 @@ public class EmployeeService {
             throw new RecordNotFoundException("No employeeRecord exist for given id");
         }
     }
-
-	
+    
+    
+	public List<EmployeeRecord> sortByFistname(String order) {
+		List<EmployeeRecord> result;
+		
+		if (order.equals("asc")) {
+			result = (List<EmployeeRecord>) repository.findByOrderByFirstnameAsc();
+		} else {
+			result = (List<EmployeeRecord>) repository.findByOrderByFirstnameDesc();
+		}
+		
+		if (result.size() > 0) {
+			return result;
+		} else {
+			return new ArrayList<EmployeeRecord>();
+		}
+	}
 }

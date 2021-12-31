@@ -41,13 +41,16 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	  protected void configure(HttpSecurity http) throws Exception {
+        http.authorizeRequests().antMatchers("/**").permitAll().anyRequest().authenticated().and().csrf().disable();
+		
+		/*
 		http.authorizeRequests().antMatchers("/").permitAll()
         .and()
         .authorizeRequests().antMatchers("/h2-console/**").permitAll()
         .and()
         .authorizeRequests().antMatchers("/list").hasAnyAuthority("USER","ADMIN")
         .and()
-        .authorizeRequests().antMatchers("/edit/", "/edit/**", "/delete/**", "/createDebateRecord").hasAuthority("ADMIN")
+        .authorizeRequests().antMatchers("/edit/", "/edit/**", "/delete/**", "/createEmployeeRecord").hasAuthority("ADMIN")
         .and()
         .formLogin().loginProcessingUrl("/login").successForwardUrl("/list").permitAll()
         .and()
@@ -58,6 +61,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         .csrf().ignoringAntMatchers("/h2-console/**")
         .and()
         .cors().disable();
+        */
 	    
 	  }
 }
